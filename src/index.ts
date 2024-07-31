@@ -5,6 +5,8 @@ import { MongoGetPartnersRepository } from "./repositories/get-partners/mongo-ge
 import { MongoClient } from "./database/mongo";
 import { MongoCreatePartnerRepository } from "./repositories/create-partner/mongo-create-partners";
 import { CreatePartnerController } from "./controllers/create-partner/create-partner";
+import { MongoUpdatePartnerRepository } from "./repositories/update-partner/mongo-update-partner";
+import { UpdatePartnerController } from "./controllers/update-partner/update-partner";
 
 const main = async () => {
   config();
@@ -32,6 +34,20 @@ const main = async () => {
     const { body, statusCode } = await createPartnerController.handle({
       body: req.body,
     });
+    res.status(statusCode).send(body);
+  });
+
+  app.patch("/partners/:id", async (req, res) => {
+    const mongoUpdatePartnerRepository = new MongoUpdatePartnerRepository();
+    const updatePartnerController = new UpdatePartnerController(
+      mongoUpdatePartnerRepository
+    );
+
+    const { body, statusCode } = await updatePartnerController.handle({
+      body: req.body,
+      params: req.params,
+    });
+
     res.status(statusCode).send(body);
   });
 
