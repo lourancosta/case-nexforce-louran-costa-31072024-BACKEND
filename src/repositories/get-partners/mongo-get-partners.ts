@@ -1,6 +1,6 @@
 import { IGetPartnersRepository } from "../../controllers/get-partners/protocols";
 import { MongoClient } from "../../database/mongo";
-import { Partner } from "../../model/partner";
+import { Partner } from "../../models/partner";
 
 export class MongoGetPartnersRepository implements IGetPartnersRepository {
   async getPartners(): Promise<Partner[]> {

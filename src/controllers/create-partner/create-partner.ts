@@ -1,4 +1,4 @@
-import { Partner } from "../../model/partner";
+import { Partner } from "../../models/partner";
 
 export interface CreatePartnerParams {
   name: string;

@@ -1,4 +1,4 @@
-import { Partner } from "../../model/partner";
+import { Partner } from "../../models/partner";
 import { HttpResponse } from "../protocols";
 
 export interface IGetPartnersController {

@@ -3,7 +3,7 @@ import {
   ICreatePartnerRepository,
 } from "../../controllers/create-partner/create-partner";
 import { MongoClient } from "../../database/mongo";
-import { Partner } from "../../model/partner";
+import { Partner } from "../../models/partner";
 
 export class MongoCreatePartner implements ICreatePartnerRepository {
   async createPartner(params: CreatePartnerParams): Promise<Partner> {
