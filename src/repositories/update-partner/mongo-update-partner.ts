@@ -5,6 +5,7 @@ import {
 } from "../../controllers/update-partner/protocols";
 import { MongoClient } from "../../database/mongo";
 import { Partner } from "../../models/partner";
+import { MongoPartner } from "../mongo-protocols";
 
 export class MongoUpdatePartnerRepository implements IUpdatePartnerRepository {
   async updatePartner(
@@ -21,7 +22,7 @@ export class MongoUpdatePartnerRepository implements IUpdatePartnerRepository {
     );
 
     const partner = await MongoClient.db
-      .collection<Omit<Partner, "id">>("partners")
+      .collection<MongoPartner>("partners")
       .findOne({ _id: new ObjectId(id) });
 
     if (!partner) {

@@ -4,6 +4,7 @@ import {
 } from "../../controllers/create-partner/protocols";
 import { MongoClient } from "../../database/mongo";
 import { Partner } from "../../models/partner";
+import { MongoPartner } from "../mongo-protocols";
 
 export class MongoCreatePartnerRepository implements ICreatePartnerRepository {
   async createPartner(params: CreatePartnerParams): Promise<Partner> {
@@ -12,7 +13,7 @@ export class MongoCreatePartnerRepository implements ICreatePartnerRepository {
       .insertOne(params);
 
     const partner = await MongoClient.db
-      .collection<Omit<Partner, "id">>("partners")
+      .collection<MongoPartner>("partners")
       .findOne({ _id: insertedId });
 
     if (!partner) {

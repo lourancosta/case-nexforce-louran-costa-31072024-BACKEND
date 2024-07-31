@@ -2,11 +2,12 @@ import { ObjectId } from "mongodb";
 import { IDeletePartnerRepository } from "../../controllers/delete-partner/protocols";
 import { MongoClient } from "../../database/mongo";
 import { Partner } from "../../models/partner";
+import { MongoPartner } from "../mongo-protocols";
 
 export class MongoDeletePartnerRepository implements IDeletePartnerRepository {
   async deletePartner(id: string): Promise<Partner> {
     const partner = await MongoClient.db
-      .collection<Omit<Partner, "id">>("partners")
+      .collection<MongoPartner>("partners")
       .findOne({ _id: new ObjectId(id) });
 
     if (!partner) {
