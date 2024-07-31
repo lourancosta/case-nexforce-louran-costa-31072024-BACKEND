@@ -1,22 +1,17 @@
-import { IController } from "../protocols";
+import { Partner } from "../../models/partner";
+import { ok, serverError } from "../helpers";
+import { HttpResponse, IController } from "../protocols";
 import { IGetPartnersRepository } from "./protocols";
 
 export class GetPartnersControler implements IController {
   constructor(private readonly getPartnersRepository: IGetPartnersRepository) {}
 
-  async handle() {
+  async handle(): Promise<HttpResponse<Partner[] | string>> {
     try {
       const partners = await this.getPartnersRepository.getPartners();
-
-      return {
-        statusCode: 200,
-        body: partners,
-      };
+      return ok<Partner[]>(partners);
     } catch (error) {
-      return {
-        statusCode: 500,
-        body: "Something went wrong.",
-      };
+      return serverError();
     }
   }
 }

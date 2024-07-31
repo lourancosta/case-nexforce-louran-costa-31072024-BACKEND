@@ -1,4 +1,5 @@
 import { Partner } from "../../models/partner";
+import { badRequests, created, serverError } from "../helpers";
 import { HttpRequest, HttpResponse, IController } from "../protocols";
 import { CreatePartnerParams, ICreatePartnerRepository } from "./protocols";
 
@@ -9,37 +10,25 @@ export class CreatePartnerController implements IController {
 
   async handle(
     httpRequest: HttpRequest<CreatePartnerParams>
-  ): Promise<HttpResponse<Partner>> {
+  ): Promise<HttpResponse<Partner | string>> {
     try {
       const requiredFields = ["name", "domain", "phone", "city", "country"];
 
       for (const field of requiredFields) {
         if (!httpRequest?.body?.[field as keyof CreatePartnerParams]?.length) {
-          return {
-            statusCode: 400,
-            body: `Field ${field} is required.`,
-          };
+          return badRequests(`Field ${field} is required.`);
         }
       }
 
       if (!httpRequest.body) {
-        return {
-          statusCode: 400,
-          body: "Please inform a body.",
-        };
+        return badRequests("Please inform a body.");
       }
       const partner = await this.createPartnerRepository.createPartner(
         httpRequest.body!
       );
-      return {
-        statusCode: 201,
-        body: partner,
-      };
+      return created<Partner>(partner);
     } catch (error) {
-      return {
-        statusCode: 500,
-        body: "Something went wrong.",
-      };
+      return serverError();
     }
   }
 }

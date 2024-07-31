@@ -1,4 +1,5 @@
 import { Partner } from "../../models/partner";
+import { badRequests, ok, serverError } from "../helpers";
 import { HttpRequest, HttpResponse, IController } from "../protocols";
 import { IUpdatePartnerRepository, UpdatePartnerParams } from "./protocols";
 
@@ -9,23 +10,17 @@ export class UpdatePartnerController implements IController {
 
   async handle(
     httpRequest: HttpRequest<UpdatePartnerParams>
-  ): Promise<HttpResponse<Partner>> {
+  ): Promise<HttpResponse<Partner | string>> {
     try {
       const id = httpRequest?.params?.id;
       const body = httpRequest.body;
 
       if (!body) {
-        return {
-          statusCode: 400,
-          body: "Missing body request.",
-        };
+        return badRequests("Missing body request.");
       }
 
       if (!id) {
-        return {
-          statusCode: 400,
-          body: "Missing partner id",
-        };
+        return badRequests("Missing partner id.");
       }
 
       const partner = await this.updatePartnerRepository.updatePartner(
@@ -33,15 +28,9 @@ export class UpdatePartnerController implements IController {
         body
       );
 
-      return {
-        statusCode: 200,
-        body: partner,
-      };
+      return ok<Partner>(partner);
     } catch (error) {
-      return {
-        statusCode: 500,
-        body: "Something went wrong,",
-      };
+      return serverError();
     }
   }
 }
