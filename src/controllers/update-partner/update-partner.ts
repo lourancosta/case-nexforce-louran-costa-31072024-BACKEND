@@ -19,7 +19,7 @@ export class UpdatePartnerController implements IUpdatePartnerController {
       if (!id) {
         return {
           statusCode: 400,
-          body: "Missing user id",
+          body: "Missing partner id",
         };
       }
 
