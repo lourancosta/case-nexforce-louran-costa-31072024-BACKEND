@@ -1,20 +1,25 @@
 import { Partner } from "../../models/partner";
-import { HttpRequest, HttpResponse } from "../protocols";
-import {
-  IUpdatePartnerController,
-  IUpdatePartnerRepository,
-} from "./protocols";
+import { HttpRequest, HttpResponse, IController } from "../protocols";
+import { IUpdatePartnerRepository, UpdatePartnerParams } from "./protocols";
 
-export class UpdatePartnerController implements IUpdatePartnerController {
+export class UpdatePartnerController implements IController {
   constructor(
     private readonly updatePartnerRepository: IUpdatePartnerRepository
   ) {}
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  async handle(httpRequest: HttpRequest<any>): Promise<HttpResponse<Partner>> {
+  async handle(
+    httpRequest: HttpRequest<UpdatePartnerParams>
+  ): Promise<HttpResponse<Partner>> {
     try {
       const id = httpRequest?.params?.id;
       const body = httpRequest.body;
+
+      if (!body) {
+        return {
+          statusCode: 400,
+          body: "Missing body request.",
+        };
+      }
 
       if (!id) {
         return {

@@ -1,11 +1,4 @@
 import { Partner } from "../../models/partner";
-import { HttpRequest, HttpResponse } from "../protocols";
-
-export interface ICreatePartnerController {
-  handle(
-    httpRequest: HttpRequest<CreatePartnerParams>
-  ): Promise<HttpResponse<Partner>>;
-}
 
 export interface CreatePartnerParams {
   name: string;

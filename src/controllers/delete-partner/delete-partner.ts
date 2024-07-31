@@ -1,11 +1,8 @@
 import { Partner } from "../../models/partner";
-import { HttpRequest, HttpResponse } from "../protocols";
-import {
-  IDeletePartnerController,
-  IDeletePartnerRepository,
-} from "./protocols";
+import { HttpRequest, HttpResponse, IController } from "../protocols";
+import { IDeletePartnerRepository } from "./protocols";
 
-export class DeletePartnerController implements IDeletePartnerController {
+export class DeletePartnerController implements IController {
   constructor(
     private readonly deletePartnerRepository: IDeletePartnerRepository
   ) {}

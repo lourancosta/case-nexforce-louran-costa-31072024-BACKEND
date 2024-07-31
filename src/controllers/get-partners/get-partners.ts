@@ -1,6 +1,7 @@
-import { IGetPartnersController, IGetPartnersRepository } from "./protocols";
+import { IController } from "../protocols";
+import { IGetPartnersRepository } from "./protocols";
 
-export class GetPartnersControler implements IGetPartnersController {
+export class GetPartnersControler implements IController {
   constructor(private readonly getPartnersRepository: IGetPartnersRepository) {}
 
   async handle() {

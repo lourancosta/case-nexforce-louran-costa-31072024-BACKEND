@@ -1,12 +1,8 @@
 import { Partner } from "../../models/partner";
-import { HttpRequest, HttpResponse } from "../protocols";
-import {
-  CreatePartnerParams,
-  ICreatePartnerController,
-  ICreatePartnerRepository,
-} from "./protocols";
+import { HttpRequest, HttpResponse, IController } from "../protocols";
+import { CreatePartnerParams, ICreatePartnerRepository } from "./protocols";
 
-export class CreatePartnerController implements ICreatePartnerController {
+export class CreatePartnerController implements IController {
   constructor(
     private readonly createPartnerRepository: ICreatePartnerRepository
   ) {}
