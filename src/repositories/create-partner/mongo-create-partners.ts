@@ -1,11 +1,11 @@
 import {
   CreatePartnerParams,
   ICreatePartnerRepository,
-} from "../../controllers/create-partner/create-partner";
+} from "../../controllers/create-partner/protocols";
 import { MongoClient } from "../../database/mongo";
 import { Partner } from "../../models/partner";
 
-export class MongoCreatePartner implements ICreatePartnerRepository {
+export class MongoCreatePartnerRepository implements ICreatePartnerRepository {
   async createPartner(params: CreatePartnerParams): Promise<Partner> {
     const { insertedId } = await MongoClient.db
       .collection("partners")
