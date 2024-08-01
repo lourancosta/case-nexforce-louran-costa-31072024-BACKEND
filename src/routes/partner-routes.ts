@@ -8,6 +8,8 @@ import { MongoUpdatePartnerRepository } from "../repositories/update-partner/mon
 import { UpdatePartnerController } from "../controllers/update-partner/update-partner";
 import { MongoDeletePartnerRepository } from "../repositories/delete-partner/mongo-delete-partner";
 import { DeletePartnerController } from "../controllers/delete-partner/delete-partner";
+import { MongoGetPartnerByIdRepository } from "../repositories/get-partner/mongo-get-partner";
+import { GetPartnerByIdController } from "../controllers/get-partner/get-partner";
 
 const partnerRouter = express.Router();
 
@@ -18,6 +20,20 @@ partnerRouter.get("/partners", async (req, res) => {
   );
   const response = await getPartnersController.handle();
   res.status(response.statusCode).send(response.body);
+});
+
+partnerRouter.get("/partners/:id", async (req, res) => {
+  const mongoGetPartnerByIdRepository = new MongoGetPartnerByIdRepository();
+  const getPartnerByIdController = new GetPartnerByIdController(
+    mongoGetPartnerByIdRepository
+  );
+
+  const { body, statusCode } = await getPartnerByIdController.handle({
+    body: req.body,
+    params: req.params,
+  });
+
+  res.status(statusCode).send(body);
 });
 
 partnerRouter.post("/partners", async (req, res) => {
