@@ -13,7 +13,7 @@ export class MongoGetPartnerByIdRepository
       .findOne({ _id: new ObjectId(id) });
 
     if (!partner) {
-      throw new Error("Partner not founded.");
+      throw new Error("Partner not found.");
     }
 
     const { _id, ...rest } = partner;
