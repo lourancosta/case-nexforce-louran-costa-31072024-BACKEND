@@ -43,16 +43,16 @@ A API da aplicação possui os métodos GET, POST, PATCH, DELETE onde:
 
 Retorna todos os parceiros cadastrados
 ```
-GET - ttp://localhost:8000/api/partners
+GET - http://localhost:8000/api/partners
 ```
 Retorna informações do parceiro passado no parametro da requisição:
 ```
-GET - ttp://localhost:8000/api/partners/ID_PARCEIRO
+GET - http://localhost:8000/api/partners/ID_PARCEIRO
 ```
 
 Registra um novo cadastro de parceiro:
 ```
-POST - ttp://localhost:8000/api/partners
+POST - http://localhost:8000/api/partners
 
 body:
  {
@@ -66,7 +66,7 @@ body:
 ```
 Atualiza o cadastro do parceiro passado no parametro da requisição:
 ```
-PATCH - ttp://localhost:8000/api/partners/ID_PARCEIRO
+PATCH - http://localhost:8000/api/partners/ID_PARCEIRO
 
 body com informações atualizavéis:
  {
@@ -80,7 +80,7 @@ body com informações atualizavéis:
 ```
 Deleta o parceiro passado no parametro da requisição:
 ```
-DELETE - ttp://localhost:8000/api/partners/ID_PARCEIRO
+DELETE - http://localhost:8000/api/partners/ID_PARCEIRO
 ```
 
 ---
@@ -95,4 +95,26 @@ Para executar o script é necessário ter o python instalado em seu ambiente. Ap
 python3 data-analysis.py
 ```
 
-Ao executar o comando, será mostrado no terminal o resultado da análise e será gerado no mesmo diretório um arquivo .JSON com o resultado da análise.
+Ao executar o comando, será mostrado no terminal o resultado da análise, por exemplo:
+
+```
+            name         country
+0       NexForce          Brasil
+1           Meta          Canada
+2         Google  Estados Unidos
+3        Netflix  Estados Unidos
+4        HubSpot  Estados Unidos
+5     SalesForce  Estados Unidos
+6      Microsoft  Estados Unidos
+7         Nubank          Brasil
+8  Disney Europa          Franca
+
+country
+Estados Unidos    5
+Brasil            2
+Canada            1
+Franca            1
+
+```
+
+Em seguida, será gerado no mesmo diretório, um arquivo REPORT.JSON com o resultado da análise.
