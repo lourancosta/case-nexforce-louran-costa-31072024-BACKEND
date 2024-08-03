@@ -38,6 +38,34 @@ npm run start
 Abra o [http://localhost:8000/api/partners](http://localhost:8000/api/partners) no navegador para verificar o status da API em execução.
 
 ---
+## Métodos API
+A API da aplicação possui os métodos GET, POST, PATCH, DELETE onde:
+
+Retorna todos os parceiros cadastrados
+```
+GET - ttp://localhost:8000/api/partners
+```
+Retorna informações do parceiro passado como parametro:
+```
+GET - ttp://localhost:8000/api/partners/ID_PARCEIRO
+```
+
+Registra um novo cadastro de parceiro:
+```
+POST - ttp://localhost:8000/api/partners
+
+body:
+ {
+    "name": "COMPANY_NAME",
+    "domain": "COMPANY_DOMAIN",
+    "phone": "COMPANY_PHONE",
+    "city": "COMPANY_CITY",
+    "country": "COMPANY_COUNTRY"
+ }
+
+```
+
+---
 
 # Script Python para Análise de Dados
 
