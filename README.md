@@ -123,3 +123,9 @@ Franca            1
 ```
 
 Em seguida, será gerado no mesmo diretório, um arquivo REPORT.JSON com o resultado da análise.
+
+## Utilizando o Frontend da Aplicação
+
+Foi desenvolvido um projeto frontend para utilização do projeto por usuários. Para inicializa-lo siga os passos do repositório abaixo:
+
+[Inicializardo o Frontend](https://github.com/lourancosta/case-nexforce-louran-costa-31072024-FRONTEND)
