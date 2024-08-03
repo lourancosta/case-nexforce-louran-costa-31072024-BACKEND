@@ -45,7 +45,7 @@ Retorna todos os parceiros cadastrados
 ```
 GET - ttp://localhost:8000/api/partners
 ```
-Retorna informações do parceiro passado como parametro:
+Retorna informações do parceiro passado no parametro da requisição:
 ```
 GET - ttp://localhost:8000/api/partners/ID_PARCEIRO
 ```
@@ -63,6 +63,24 @@ body:
     "country": "COMPANY_COUNTRY"
  }
 
+```
+Atualiza o cadastro do parceiro passado no parametro da requisição:
+```
+PATCH - ttp://localhost:8000/api/partners/ID_PARCEIRO
+
+body com informações atualizavéis:
+ {
+    "name": "COMPANY_NAME",
+    "domain": "COMPANY_DOMAIN",
+    "phone": "COMPANY_PHONE",
+    "city": "COMPANY_CITY",
+    "country": "COMPANY_COUNTRY"
+ }
+
+```
+Deleta o parceiro passado no parametro da requisição:
+```
+DELETE - ttp://localhost:8000/api/partners/ID_PARCEIRO
 ```
 
 ---
