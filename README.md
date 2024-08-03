@@ -21,18 +21,18 @@ Após a configuração, se tudo estiver correto, ao executar em modo de desenvol
 
 ---
 
-## Como executar em modo de desenvolvimento
-
-Para executar em modo de desenvolvimento execute o comando:
-
-```
-npm run start:dev
-```
+## Como executar o projeto
 
 Para executar a API basta executar:
 
 ```
 npm run start
+```
+
+Para executar em modo de desenvolvimento execute o comando:
+
+```
+npm run start:dev
 ```
 
 Abra o [http://localhost:8000/api/partners](http://localhost:8000/api/partners) no navegador para verificar o status da API em execução.
