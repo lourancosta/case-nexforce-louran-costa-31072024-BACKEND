@@ -89,7 +89,12 @@ DELETE - http://localhost:8000/api/partners/ID_PARCEIRO
 
 O script tem como finalidade analisar e mostrar a quantidade parceiros por país, trazendo do que mais possui para o que menos possui.
 
-Para executar o script é necessário ter o python instalado em seu ambiente. Após a instalação, acesse a pasta do script pelo terminal e digite o comando:
+Para executar o script é necessário ter o python e bibliotecas utilizadas instaladas em seu ambiente, são elas:
+- request
+- pandas
+- json
+
+Após a instalação, acesse a pasta do script pelo terminal e digite o comando:
 
 ```
 python3 data-analysis.py
